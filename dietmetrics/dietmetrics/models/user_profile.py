@@ -1,9 +1,5 @@
-
 """
-Models for the dietmetrics application.
-
-This module defines the core data models used to store user diet profiles
-and daily nutrition and activity metrics.
+Docstring for dietmetrics.models
 """
 
 from django.db import models
@@ -35,21 +31,3 @@ class UserDietmetricsProfile(models.Model):
         required to maintain the current body weight.
         """
         return 0
-
-
-class DayMetric(models.Model):
-    """
-    Stores daily nutrition and activity metrics for a user.
-
-    Each entry represents one day of tracking including calorie intake
-    and energy expenditure from physical activity.
-    """
-
-    dietmetrics_user = models.ForeignKey(
-        to=UserDietmetricsProfile,
-        on_delete=models.CASCADE,
-        related_name="daily_metrics",
-    )
-    date = models.DateField()
-    calories = models.IntegerField()
-    activity_expenditure = models.IntegerField()
